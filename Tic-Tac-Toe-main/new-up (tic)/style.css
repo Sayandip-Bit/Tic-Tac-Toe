@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0e17;
+  color: #ece8e1;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* grid lines in background - valo style */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: #e8c84a;
+  border: 1px solid #e8c84a;
+  padding: 2px 12px;
+  text-transform: uppercase;
+}
+
+/* scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #16141f;
+  border: 1px solid #2a2640;
+  border-radius: 10px;
+  padding: 16px 20px;
+  gap: 10px;
+}
+
+.player-score {
+  text-align: center;
+  flex: 1;
+}
+
+.player-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #7b7a8e;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+/* player 1 = red, player 2 = cyan */
+#p1-score-box .score { color: #ff4655; }
+#p2-score-box .score { color: #00c8c8; }
+
+/* highlight active player's score box */
+#p1-score-box.active .player-label { color: #ff4655; }
+#p2-score-box.active .player-label { color: #00c8c8; }
+
+.middle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vs {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #2a2640;
+  font-weight: 900;
+}
+
+.draws {
+  font-size: 11px;
+  color: #7b7a8e;
+}
+
+/* turn text */
+.turn-text {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ece8e1;
+  background: #16141f;
+  border: 1px solid #2a2640;
+  padding: 8px 20px;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+/* board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.cell {
+  aspect-ratio: 1;
+  background: #16141f;
+  border: 1px solid #2a2640;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 10vw, 3rem);
+  font-weight: 900;
+  transition: background 0.15s, transform 0.1s;
+  user-select: none;
+}
+
+.cell:hover {
+  background: #1e1b2e;
+  border-color: #3d3860;
+  transform: scale(1.04);
+}
+
+/* player 1 = X, red */
+.cell.p1 {
+  color: #ff4655;
+  background: rgba(255, 70, 85, 0.1);
+  border-color: rgba(255, 70, 85, 0.4);
+  text-shadow: 0 0 16px rgba(255, 70, 85, 0.6);
+  cursor: default;
+  animation: pop 0.2s ease;
+}
+
+/* player 2 = O, cyan */
+.cell.p2 {
+  color: #00c8c8;
+  background: rgba(0, 200, 200, 0.1);
+  border-color: rgba(0, 200, 200, 0.4);
+  text-shadow: 0 0 16px rgba(0, 200, 200, 0.6);
+  cursor: default;
+  animation: pop 0.2s ease;
+}
+
+/* winning cells glow more */
+.cell.win {
+  animation: glow-pulse 0.8s ease-in-out infinite alternate;
+}
+
+.cell.p1.win {
+  background: rgba(255, 70, 85, 0.25);
+  border-color: #ff4655;
+  box-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
+}
+
+.cell.p2.win {
+  background: rgba(0, 200, 200, 0.25);
+  border-color: #00c8c8;
+  box-shadow: 0 0 20px rgba(0, 200, 200, 0.5);
+}
+
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  from { opacity: 0.7; }
+  to   { opacity: 1;   }
+}
+
+/* buttons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #3d3860;
+  background: #16141f;
+  color: #ece8e1;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover {
+  background: #2a2640;
+}
+
+#next-btn {
+  border-color: #ff4655;
+  color: #ff4655;
+  display: none;
+}
+
+#next-btn:hover {
+  background: rgba(255, 70, 85, 0.15);
+}
+
+#next-btn.show {
+  display: block;
+}
+
+/*  mobile */
+@media (max-width: 400px) {
+  h1 { font-size: 1.8rem; }
+  .scoreboard { padding: 12px 14px; }
+  .score { font-size: 1.5rem; }
+}

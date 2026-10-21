@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Tic Tac Toe</h1>
+   
+
+    <!-- scoreboard -->
+    <div class="scoreboard">
+      <div class="player-score" id="p1-score-box">
+        <p class="player-label">Player 1</p>
+        <p class="score" id="p1-score">0</p>
+      </div>
+      <div class="middle">
+        <p class="vs">VS</p>
+        <p class="draws">Draws: <span id="draw-count">0</span></p>
+      </div>
+      <div class="player-score" id="p2-score-box">
+        <p class="player-label">Player 2</p>
+        <p class="score" id="p2-score">0</p>
+      </div>
+    </div>
+
+    <!-- whose turn -->
+    <p class="turn-text" id="turn-text">Player 1's turn</p>
+
+    <!-- the board -->
+    <div class="board" id="board">
+      <div class="cell" id="cell-0"></div>
+      <div class="cell" id="cell-1"></div>
+      <div class="cell" id="cell-2"></div>
+      <div class="cell" id="cell-3"></div>
+      <div class="cell" id="cell-4"></div>
+      <div class="cell" id="cell-5"></div>
+      <div class="cell" id="cell-6"></div>
+      <div class="cell" id="cell-7"></div>
+      <div class="cell" id="cell-8"></div>
+    </div>
+
+    <!-- buttons -->
+    <div class="buttons">
+      <button id="next-btn" onclick="nextRound()">Next Round</button>
+      <button id="reset-btn" onclick="resetGame()">Reset</button>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
